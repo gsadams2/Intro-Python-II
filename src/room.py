@@ -20,7 +20,7 @@ class Room:
             print('No items here, bro')
         else:
             for i in self.item_list:
-                print(i.name)
+                print(f'Items: {i.name}')
 
     def remove_item(self, item):
         self.item_list.remove(item)

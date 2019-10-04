@@ -51,9 +51,6 @@ room['treasure'].add_item(Item('phone', 'use the phone to call your mommy'))
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 
-#while ( input("Do something")  != 'q'):
-    #print(bernard.current_room.name)
-
 
 bernard = Player("Bernard", room["outside"])
 
@@ -62,7 +59,7 @@ print(bernard)
 command = input(' Move in a direction (N, S, E, W) or hit q to quit: \n')
 
 
-split_command = command.split()
+
 
 directions = ['n', 's', 'e', 'w']
 
@@ -72,18 +69,22 @@ while not command == 'q':
     if any(i in command for i in directions):
         bernard.move(command)
         print(bernard)
+        bernard.current_room.print_items()
         print("Do you wish to enter another room?")
         command = input(' Move in a direction (N, S, E, W) or hit q to quit: \n')
-    elif len(split_command) == 2:
-        if split_command[0] == 'grab':
-            bernard.on_grab(split_command[1])
-        elif split_command[0] == 'drop':
-            bernard.on_drop(split_command[1])
-            
+        split_command = command.split()
+        if len(split_command) == 2:
+            if split_command[0] == 'grab':
+                bernard.on_grab(split_command[1])
+            elif split_command[0] == 'drop':
+                bernard.on_drop(split_command[1]) 
+    elif command == "i":
+        bernard.print_inventory()
+        break
     else:
         print("invalid brooooo")
         print("Do you wish to enter another room?")
-        command = input(' Move in a direction (N, S, E, W) or hit q to quit: \n')
+        
         
 #Add functionality to the main loop that prints out all the items that are visible to the player when they are in that room.
 

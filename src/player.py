@@ -26,7 +26,8 @@ class Player:
         elif direction == 'e':
             if self.current_room.e_to == None:
                 return print("Broooo, you can't go there")
-            self.current_room = self.current_room.e_to         
+            self.current_room = self.current_room.e_to
+          
         else:
             return print("Broooooo, that's not even a valid direction")
         return self.current_room
@@ -34,7 +35,7 @@ class Player:
     def on_grab(self, item_name):
         item = self.current_room.find_item(item_name)
         if item is None:
-            print("No item here")
+            print("No item here bro")
         else:
             self.inventory.append(item)
             self.current_room.remove_item(item)
@@ -45,7 +46,7 @@ class Player:
         if item is None:
             print("No item here")
         else:
-            self.inventory.remove(item)
+            self.remove_item(item)
             self.current_room.add_item(item)
             print(f'You have dropped {item_name}')
 
@@ -57,12 +58,12 @@ class Player:
 
     def remove_item(self, item):
         self.inventory.remove(item)
-    
+
+    def print_inventory(self):
         if len(self.inventory) == 0:
-            print("No items in your inventory brooooooo")
+            print("No items in inventory brooo")
         else:
             print("Items:")
             for i in self.inventory:
                 print(i.name)
-
 
