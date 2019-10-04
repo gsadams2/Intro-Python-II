@@ -41,23 +41,24 @@ class Player:
             self.current_room.remove_item(item)
             print(f'You have picked up {item_name}')
 
-    def on_drop(self, item_name):
-        item = self.current_room.find_item(item_name)
-        if item is None:
-            print("No item here")
-        else:
-            self.remove_item(item)
-            self.current_room.add_item(item)
-            print(f'You have dropped {item_name}')
-
     def check_inventory(self, item_name):
         for item in self.inventory:
             if item.name == item_name:
                 return item
         return None
-
+    
     def remove_item(self, item):
         self.inventory.remove(item)
+
+    def on_drop(self, item_name):
+        item = self.check_inventory(item_name)
+        if item is None:
+            print("No item here brah")
+        else:
+            self.remove_item(item)
+            self.current_room.add_item(item)
+            print(f'You have dropped {item_name}')
+   
 
     def print_inventory(self):
         if len(self.inventory) == 0:

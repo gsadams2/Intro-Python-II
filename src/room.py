@@ -21,14 +21,16 @@ class Room:
         else:
             for i in self.item_list:
                 print(f'Items: {i.name}')
-
-    def remove_item(self, item):
-        self.item_list.remove(item)
-    
+                
     def find_item(self, item_name):
         for item in self.item_list:
             if item.name == item_name:
                 return item
         return None
+
+    def remove_item(self, item):
+        self.item_list.remove(item)
+    
+    
 
 

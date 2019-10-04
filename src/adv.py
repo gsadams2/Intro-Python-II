@@ -74,10 +74,10 @@ while not command == 'q':
         command = input(' Move in a direction (N, S, E, W) or hit q to quit: \n')
         split_command = command.split()
         if len(split_command) == 2:
-            if split_command[0] == 'grab':
-                bernard.on_grab(split_command[1])
-            elif split_command[0] == 'drop':
-                bernard.on_drop(split_command[1]) 
+            if split_command[0] == 'drop':
+                bernard.on_drop(split_command[1])
+            elif split_command[0] == 'grab':
+                bernard.on_grab(split_command[1]) 
     elif command == "i":
         bernard.print_inventory()
         break
